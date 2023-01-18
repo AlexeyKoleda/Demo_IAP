@@ -16,6 +16,9 @@ struct DemoPurchaseApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(purchaseManager)
+                .task {
+                    await purchaseManager.updatePurchasedProducts()
+                }
         }
     }
 }

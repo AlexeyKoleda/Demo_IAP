@@ -14,22 +14,26 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Products")
-            ForEach(purchaseManager.products) { product in
-                Button {
-                    Task {
-                        do {
-                            try await purchaseManager.purchase(product)
-                        } catch {
-                            print(error)
+            if purchaseManager.hasUnlockedPro {
+                Text("Thank you for purchasing pro!")
+            } else {
+                Text("Products")
+                ForEach(purchaseManager.products) { (product) in
+                    Button {
+                        Task {
+                            do {
+                                try await purchaseManager.purchase(product)
+                            } catch {
+                                print(error)
+                            }
                         }
+                    } label: {
+                        Text("\(product.displayPrice) - \(product.displayName)")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(.blue)
+                            .clipShape(Capsule())
                     }
-                } label: {
-                    Text("\(product.displayPrice) - \(product.displayName)")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(.blue)
-                        .clipShape(Capsule())
                 }
             }
         }.task {
