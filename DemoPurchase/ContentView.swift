@@ -35,12 +35,25 @@ struct ContentView: View {
                             .clipShape(Capsule())
                     }
                 }
+                Button {
+                    _ = Task<Void, Never> {
+                        do {
+                            try await AppStore.sync()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                } label: {
+                    Text("Restore Purchases")
+                }
             }
         }.task {
-            do {
-                try await purchaseManager.loadProducts()
-            } catch {
-                print(error)
+            _ = Task<Void, Never> {
+                do {
+                    try await purchaseManager.loadProducts()
+                } catch {
+                    print(error)
+                }
             }
         }
     }
