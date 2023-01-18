@@ -10,17 +10,20 @@ import StoreKit
 
 struct ContentView: View {
     @EnvironmentObject
+    private var entitlementManager: EntitlementManager
+
+    @EnvironmentObject
     private var purchaseManager: PurchaseManager
 
     var body: some View {
         VStack(spacing: 20) {
-            if purchaseManager.hasUnlockedPro {
+            if entitlementManager.hasPro {
                 Text("Thank you for purchasing pro!")
             } else {
                 Text("Products")
-                ForEach(purchaseManager.products) { (product) in
+                ForEach(purchaseManager.products) { product in
                     Button {
-                        Task {
+                        _ = Task<Void, Never> {
                             do {
                                 try await purchaseManager.purchase(product)
                             } catch {
@@ -35,6 +38,7 @@ struct ContentView: View {
                             .clipShape(Capsule())
                     }
                 }
+
                 Button {
                     _ = Task<Void, Never> {
                         do {
@@ -59,9 +63,10 @@ struct ContentView: View {
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(PurchaseManager())
+            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
     }
 }
