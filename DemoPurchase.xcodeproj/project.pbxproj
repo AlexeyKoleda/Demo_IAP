@@ -12,6 +12,7 @@
 		FAA67FF229780471002BAC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA67FF129780471002BAC6D /* Assets.xcassets */; };
 		FAA67FF529780471002BAC6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA67FF429780471002BAC6D /* Preview Assets.xcassets */; };
 		FAA67FFC2978048F002BAC6D /* DemoStoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = FAA67FFB2978048F002BAC6D /* DemoStoreKitConfig.storekit */; };
+		FAA67FFE29781462002BAC6D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA67FFD29781462002BAC6D /* PurchaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		FAA67FF129780471002BAC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA67FF429780471002BAC6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FAA67FFB2978048F002BAC6D /* DemoStoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = DemoStoreKitConfig.storekit; sourceTree = "<group>"; };
+		FAA67FFD29781462002BAC6D /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				FAA67FED2978046F002BAC6D /* DemoPurchaseApp.swift */,
 				FAA67FEF2978046F002BAC6D /* ContentView.swift */,
+				FAA67FFD29781462002BAC6D /* PurchaseManager.swift */,
 				FAA67FF129780471002BAC6D /* Assets.xcassets */,
 				FAA67FF329780471002BAC6D /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA67FF02978046F002BAC6D /* ContentView.swift in Sources */,
+				FAA67FFE29781462002BAC6D /* PurchaseManager.swift in Sources */,
 				FAA67FEE2978046F002BAC6D /* DemoPurchaseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
