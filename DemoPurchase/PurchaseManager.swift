@@ -9,7 +9,7 @@ import Foundation
 import StoreKit
 
 @MainActor
-class PurchaseManager: ObservableObject {
+class PurchaseManager: NSObject, ObservableObject {
 
     private let productIds = ["pro_monthly", "pro_yearly", "pro_lifetime"]
 
@@ -24,6 +24,8 @@ class PurchaseManager: ObservableObject {
 
     init(entitlementManager: EntitlementManager) {
         self.entitlementManager = entitlementManager
+        super.init()
+        SKPaymentQueue.default().add(self)
         self.updates = observeTransactionUpdates()
     }
 
@@ -85,5 +87,15 @@ class PurchaseManager: ObservableObject {
                 await self.updatePurchasedProducts()
             }
         }
+    }
+}
+
+extension PurchaseManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
     }
 }
